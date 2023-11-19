@@ -1,5 +1,67 @@
 # popl-project
+### 1) Problem Statement:
 
+- **Original Statement:**
+  - The problem revolves around symbolic execution testing using KLEE. The POPL (Principles of Programming Languages) angle is in exploring different program paths without concrete inputs. This is a common challenge in software testing.
+
+- **POPL Angle:**
+  - The POPL angle lies in the symbolic execution technique, aiming to analyze the code without actual inputs.
+
+- **Previous Solutions:**
+  - It doesn't explicitly mention previous solutions, but symbolic execution and testing tools like KLEE are well-established in the field.
+
+- **Differences in Your Solution:**
+  - The unique aspect here is the application of symbolic execution to a specific C code snippet involving memory operations and conditional checks.
+
+### 2) Software Architecture:
+
+- **Architecture Overview:**
+  - The architecture involves a single C file with a test function. It doesn't explicitly mention a broader system architecture.
+
+- **Reused vs. Developed:**
+  - It primarily uses standard C libraries and KLEE for symbolic execution. The test function is developed for this specific purpose.
+
+- **Client-Server or Local/Remote Testing:**
+  - It doesn't involve client-server architecture. Testing is done within the C file, and KLEE operates locally.
+
+- **Database Involvement:**
+  - No database is involved in this specific implementation.
+
+### 3) POPL Aspects:
+
+- **Symbolic Execution in KLEE:**
+  - Symbolic execution is performed in the `test` function using KLEE. Lines 26-28 symbolize the offset and array, initiating symbolic execution.
+
+- **Assumptions and Constraints:**
+  - Assumptions are made on the offset (line 30), restricting it to a set of values. This is a common POPL practice to manage state space.
+
+- **Memory Access Safety:**
+  - Memory access safety is crucial in lines 14-16, ensuring that symbolic data is accessed safely without causing memory issues.
+
+- **Conditional Checks:**
+  - The conditional check on line 32 involves symbolic data, representing a POPL aspect where conditions are explored symbolically.
+
+### 4) Results and Testing:
+
+- **Tests Conducted:**
+  - The test function conducts symbolic execution tests on the `data` structure.
+
+- **Datasets Used:**
+  - It uses symbolic data as a dataset for testing, generated with KLEE's symbolic execution.
+
+- **Benchmark Results:**
+  - No explicit benchmark results or graphs are provided. Visualization of KLEE's output could be considered for a more comprehensive analysis.
+
+- **Validation:**
+  - The validation relies on the output of the conditional check, indicating whether the symbolic execution behaves as expected.
+
+### 5) Potential for Future Work:
+
+- **Extended Features:**
+  - Placeholder: With more time, additional features enhancing symbolic execution capabilities could be explored.
+
+- **Additional POPL Aspects:**
+  - Placeholder: Further investigation into advanced POPL concepts related to symbolic execution could be considered for future work.
 ## LinkedList Implementation in Rust
 
 ### Overview
