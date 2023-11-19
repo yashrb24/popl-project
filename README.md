@@ -1,5 +1,5 @@
-# popl-project
-### 1) Problem Statement:
+# Formal Verification for Rust Ported Codebases 
+### 1. Problem Statement:
 
 - **Original Statement:**
   - The problem revolves around symbolic execution testing using KLEE. The POPL (Principles of Programming Languages) angle is in exploring different program paths without concrete inputs. This is a common challenge in software testing.
@@ -13,7 +13,7 @@
 - **Differences in Your Solution:**
   - The unique aspect here is the application of symbolic execution to a specific C code snippet involving memory operations and conditional checks.
 
-### 2) Software Architecture:
+### 2. Software Architecture:
 
 - **Architecture Overview:**
   - The architecture involves a single C file with a test function. It doesn't explicitly mention a broader system architecture.
@@ -27,7 +27,7 @@
 - **Database Involvement:**
   - No database is involved in this specific implementation.
 
-### 3) POPL Aspects:
+### 3. POPL Aspects:
 
 - **Symbolic Execution in KLEE:**
   - Symbolic execution is performed in the `test` function using KLEE. Lines 26-28 symbolize the offset and array, initiating symbolic execution.
@@ -41,7 +41,7 @@
 - **Conditional Checks:**
   - The conditional check on line 32 involves symbolic data, representing a POPL aspect where conditions are explored symbolically.
 
-### 4) Results and Testing:
+### 4. Results and Testing:
 
 - **Tests Conducted:**
   - The test function conducts symbolic execution tests on the `data` structure.
@@ -55,7 +55,7 @@
 - **Validation:**
   - The validation relies on the output of the conditional check, indicating whether the symbolic execution behaves as expected.
 
-### 5) Potential for Future Work:
+### 5. Potential for Future Work:
 
 - **Extended Features:**
   - Placeholder: With more time, additional features enhancing symbolic execution capabilities could be explored.
