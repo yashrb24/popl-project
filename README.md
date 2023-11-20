@@ -65,7 +65,26 @@
 ### 5. Potential for Future Work:
 
 - **Extended Features:**
-  - Placeholder: With more time, additional features enhancing symbolic execution capabilities could be explored.
+1. **Enhanced Symbolic Execution:**
+   - Investigate advanced features and optimizations in symbolic execution engines like KLEE.
+
+2. **Integration with Larger Codebases:**
+   - Extend the symbolic testing approach to larger and more complex codebases to evaluate scalability and applicability, and collaborate with the other group to test ported real world code.
+
+3. **Dynamic Analysis:**
+   - Incorporate dynamic analysis techniques to complement symbolic execution, providing a more comprehensive understanding of program behavior.
+
+4. **Property-Based Testing:**
+   - Extend the project to support property-based testing, enabling the specification of properties to be checked during symbolic execution.
+
+5. **Benchmarking and Evaluation:**
+   - Establish a comprehensive benchmark suite and evaluate the performance of the symbolic execution engine on various types of programs and real-world use cases.
+
+6. **Concurrency and Parallel Symbolic Execution:**
+   - Explore techniques for handling concurrent and parallel code in symbolic execution to address challenges in modern multi-threaded applications.
+
+7. **Security Analysis:**
+    - Extend the project to include security-focused symbolic execution, identifying vulnerabilities and security issues in code.
 
 - **Additional POPL Aspects:**
   - Placeholder: Further investigation into advanced POPL concepts related to symbolic execution could be considered for future work.
