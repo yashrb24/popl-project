@@ -132,7 +132,7 @@ This code snippet demonstrates a simplistic memory allocation scheme using a fix
 4. Free allocated memory.
 
 
-### Explanation
+### Code Structure
 [BUFFER_SIZE](https://github.com/yashrb24/popl-project/blob/main/code-orig/custom_malloc.c#L5) defines the size of the global buffer
 
 [globalBuffer](https://github.com/yashrb24/popl-project/blob/main/code-orig/custom_malloc.c#L6) is an array of characters acting as a global memory buffer with a fixed size
