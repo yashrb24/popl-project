@@ -62,7 +62,7 @@
 - **Validation:**
   - The validation relies on the output of the conditional check, indicating whether the symbolic execution behaves as expected.
 
-### 5. Potential for Future Work:
+### 5. Potential for Future Work Given More Time:
 
 - **Extended Features:**
 1. **Enhanced Symbolic Execution:**
@@ -87,7 +87,20 @@
     - Extend the project to include security-focused symbolic execution, identifying vulnerabilities and security issues in code.
 
 - **Additional POPL Aspects:**
-  - Placeholder: Further investigation into advanced POPL concepts related to symbolic execution could be considered for future work.
+1. **Data Races:**
+   - Explore techniques to identify and mitigate data races in concurrent code.
+
+2. **Pointer Aliasing Rules:**
+   - Investigate advanced pointer analysis techniques to enforce and check pointer aliasing rules more rigorously, ensuring a higher level of safety in memory operations.
+
+3. **Immutable Data Mutations:**
+   - Develop mechanisms to track reference lifetimes and detect mutations on immutable data more precisely, allowing for better identification of potential issues related to data mutability.
+
+4. **Call ABI and Unwind ABI Mismatch:**
+   - Investigate methods to independently verify call ABI and unwind ABI, providing additional checks beyond reliance on the Rust compiler to catch potential mismatches.
+
+5. **Uninitialized Memory Detection:**
+   - Enhance mechanisms for detecting and reporting the use of uninitialized memory, potentially through advanced static analysis or runtime checks.
 ## [LinkedList Implementation in Rust(Linked_List_Example.rs)](https://github.com/yashrb24/popl-project/blob/main/code-orig/Linked_List_Example.rs)
 
 ### Overview
