@@ -69,7 +69,7 @@
 
 - **Additional POPL Aspects:**
   - Placeholder: Further investigation into advanced POPL concepts related to symbolic execution could be considered for future work.
-## LinkedList Implementation in Rust
+## [LinkedList Implementation in Rust](https://github.com/yashrb24/popl-project/blob/main/code-orig/Linked_List_Example.rs)
 
 ### Overview
 
