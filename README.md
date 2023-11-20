@@ -126,10 +126,15 @@ memory on the heap and returns its pointer, isn't compatible with this verificat
 
 ### Code Logic Progression
 This code snippet demonstrates a simplistic memory allocation scheme using a fixedsize buffer and manual bookkeeping of allocated regions. It also introduces symbolic execution to explore different execution paths, typically used in testing and verification
-1. Allocate memory from globalBuffer .
+1. Allocate memory from `globalBuffer` .
 2. Assign symbolic values to allocated memory blocks.
 3. Print these symbolic values.
 4. Free allocated memory.
+
+
+### Explanation
+####[`BUFFER_SIZE`](https://github.com/yashrb24/popl-project/blob/main/code-orig/custom_malloc.c#L5) defines the size of the global buffer
+
 
 
 
