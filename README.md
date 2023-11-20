@@ -133,7 +133,23 @@ This code snippet demonstrates a simplistic memory allocation scheme using a fix
 
 
 ### Explanation
-####[BUFFER_SIZE](https://github.com/yashrb24/popl-project/blob/main/code-orig/custom_malloc.c#L5) defines the size of the global buffer
+[BUFFER_SIZE](https://github.com/yashrb24/popl-project/blob/main/code-orig/custom_malloc.c#L5) defines the size of the global buffer
+[globalBuffer](https://github.com/yashrb24/popl-project/blob/main/code-orig/custom_malloc.c#L6) is an array of characters acting as a global memory buffer with a fixed size
+
+[MemoryAllocation Struct](https://github.com/yashrb24/popl-project/blob/main/code-orig/custom_malloc.c#L5) Represents a memory allocation with two fields:
+-  `startAddress`: Pointer to the start of the allocated memory
+-  `size` : Size of the allocated memory block.
+
+[allocatedRegions Array](https://github.com/yashrb24/popl-project/blob/main/code-orig/custom_malloc.c#L9)
+- An array of `MemoryAllocation` structures to store information about allocated memory regions.
+- `numAllocatedRegions` : Keeps track of the number of allocations.
+
+[globalMalloc Function](https://github.com/yashrb24/popl-project/blob/main/code-orig/custom_malloc.c#L22)
+- Takes a size argument and attempts to allocate memory from `globalBuffer` .
+- Checks if there's enough space and assigns memory from `globalBuffer` .
+- Stores information about the allocated memory in `allocatedRegions`.
+- Notice how [klee_make_symbolic](https://github.com/yashrb24/popl-project/blob/main/code-orig/custom_malloc.c#L25) has been used here to keep track of memory locations has been used here
+
 
 
 
