@@ -1,0 +1,9 @@
+Error: check_memory_access: memory error
+Stack: 
+	#000000032 in check(start=94534705782016, size_bytes=4, name=94534705259056)
+	#100000083 in custom_malloc(size=500)
+	#200000134 in main()
+Info: 
+	address: 94534705782016
+	next: object at 22964074579656 of size 4
+		MO12[4] (no allocation info)

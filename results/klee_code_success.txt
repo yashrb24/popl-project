@@ -1,0 +1,20 @@
+KLEE: output directory is "/home/klee/klee-out-0"
+KLEE: Using STP solver backend
+KLEE: SAT solver: MiniSat
+KLEE: WARNING: undefined reference to function: printf
+KLEE: WARNING ONCE: Alignment of memory from call "malloc" is not modelled. Using alignment of 8.
+KLEE: WARNING ONCE: Symbolic memory access will send the following array of 8192 bytes to the constraint solver -- large symbolic arrays may cause significant performance issues: MO19[8192] allocated at global:data_memory
+KLEE: WARNING ONCE: calling external: printf(94252915246360) at [no debug info]
+true
+false
+true
+false
+true
+false
+true
+false
+
+KLEE: done: total instructions = 548
+KLEE: done: completed paths = 8
+KLEE: done: partially completed paths = 0
+KLEE: done: generated tests = 8
