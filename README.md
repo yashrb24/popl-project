@@ -1,4 +1,7 @@
 # Formal Verification for Rust Ported Codebases 
+
+## Introduction
+
 ### 1. Problem Statement:
 
 - **Original Statement:**
