@@ -14,8 +14,10 @@ Check out the installation guide [here]([https://github.com/model-checking/kani]
 - Kani relies on proof harnesses for program analysis, akin to test harnesses, particularly those centred on properties
 
 ### Usage
-- In order to demonstrate the usage of Kani, we have used `Linked_List.rs` as a sample code
+- To demonstrate the usage of Kani, we have used `Linked_List.rs` as a sample code
 - To verify this using Kani, run the command `kani --harness verify_success Linked_List_Example.rs`
+- The expected output here is `VERIFICATION:- FAILED`
+- This is because we are making a null pointer [dereference](https://github.com/yashrb24/popl-project/blob/main/code-orig/Linked_List_Example.rs#L58)
 
 
 
