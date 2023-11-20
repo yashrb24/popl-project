@@ -133,7 +133,8 @@ This code snippet demonstrates a simplistic memory allocation scheme using a fix
 
 
 ### Explanation
-[BUFFER_SIZE](https://github.com/yashrb24/popl-project/blob/main/code-orig/custom_malloc.c#L5) defines the size of the global buffer\
+[BUFFER_SIZE](https://github.com/yashrb24/popl-project/blob/main/code-orig/custom_malloc.c#L5) defines the size of the global buffer
+
 [globalBuffer](https://github.com/yashrb24/popl-project/blob/main/code-orig/custom_malloc.c#L6) is an array of characters acting as a global memory buffer with a fixed size
 
 [MemoryAllocation Struct](https://github.com/yashrb24/popl-project/blob/main/code-orig/custom_malloc.c#L5) Represents a memory allocation with two fields:
@@ -150,6 +151,18 @@ This code snippet demonstrates a simplistic memory allocation scheme using a fix
 - Stores information about the allocated memory in `allocatedRegions`.
 - Notice how [klee_make_symbolic](https://github.com/yashrb24/popl-project/blob/main/code-orig/custom_malloc.c#L25) has been used here to keep track of memory locations has been used here
 
+[globalFree Function](https://github.com/yashrb24/popl-project/blob/main/code-orig/custom_malloc.c#L51)
+- Frees previously allocated memory by matching the pointer to an allocated region.
+- Clears the corresponding entry in `allocatedRegions`.
+
+[Main Function](https://github.com/yashrb24/popl-project/blob/main/code-orig/custom_malloc.c#L74)
+- Memory Allocation and Initialization:
+  - [Calls](https://github.com/yashrb24/popl-project/blob/main/code-orig/custom_malloc.c#L76) `globalMalloc` twice to allocate memory for two dynamic arrays (`dynamicArray1` and `dynamicArray2`)
+  -  Assigns symbolic values to these arrays using [klee_make_symbolic](https://github.com/yashrb24/popl-project/blob/main/code-orig/custom_malloc.c#L80). This is typically used in symbolic execution to explore different paths in the code without knowing exact concrete values.
+- Printing Array Values:
+  - [prints](https://github.com/yashrb24/popl-project/blob/main/code-orig/custom_malloc.c#L84) the values of `dynamicArray1` and `dynamicArray2`.
+- Freeing Allocated Memory:
+  - [Calls](https://github.com/yashrb24/popl-project/blob/main/code-orig/custom_malloc.c#L96) globalFree to free the memory allocated for `dynamicArray1` and `dynamicArray2`
 
 
 
