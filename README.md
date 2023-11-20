@@ -167,48 +167,42 @@ This code snippet demonstrates a simplistic memory allocation scheme using a fix
 
 
 
-## Symbolic Execution Test in C
+## [Symbolic Execution Test in C](https://github.com/yashrb24/popl-project/blob/main/tests/memory_bounds_check.c)
 
 ### Overview
 
-This C code snippet utilizes the KLEE symbolic execution engine to test a program that involves symbolic data. The program defines a structure `data` containing an offset and an array of integers. The goal is to perform symbolic execution on this program to explore different paths and verify certain conditions.
+This C code snippet utilizes the KLEE symbolic execution engine to test a program that involves symbolic data. The program defines a structure `data` containing an offset and an array of integers. The goal is to perform symbolic execution on this program to explore bounds checking for an array in C using KLEE.
 
 ### Code Structure
 
-#### Data Structure
+#### [Data Structure](https://github.com/yashrb24/popl-project/blob/main/tests/memory_bounds_check.c#L13)
 
 The `data` structure includes:
 - `offset`: An unsigned integer indicating an offset.
 - `array`: An array of unsigned integers with a maximum size of `MAX_SIZE`.
 
-#### Memory
+#### [Memory](https://github.com/yashrb24/popl-project/blob/main/tests/memory_bounds_check.c#L18)
 
-The code reserves a block of memory (`data_memory`) to be used for symbolic execution.
+The code reserves a block of memory (`data_memory`) in uninitialized global data space to be used for symbolic execution.
 
 #### Symbolic Execution Functions
 
-- `klee_make_symbolic_range(void* addr, unsigned int offset, unsigned int nbytes, const char* name)`: A helper function to create symbolic data within a specified range.
-- `test()`: The main function for testing. It creates a symbolic `data` structure, assumes certain conditions on the symbolic data, and then performs a conditional check.
+- [`klee_make_symbolic_range(void* addr, unsigned int offset, unsigned int nbytes, const char* name)`](https://github.com/yashrb24/popl-project/blob/main/tests/memory_bounds_check.c#L20): A helper function to create symbolic data within a specified range.
+- [`test()`](https://github.com/yashrb24/popl-project/blob/main/tests/memory_bounds_check.c#L36): The main function for testing. It creates a symbolic `data` structure, assumes certain conditions on the symbolic data, and then performs a conditional check.
 
 ### KLEE Symbolic Execution
 
 KLEE is a symbolic execution engine that analyzes a program to explore different paths and conditions without executing the program on concrete inputs. This allows testing various scenarios and identifying potential issues.
 
-#### Symbolic Data Generation
+#### [Symbolic Data Generation](https://github.com/yashrb24/popl-project/blob/main/tests/memory_bounds_check.c#L40)
 
 The `klee_make_symbolic_range` function is used to create symbolic data for the `offset` and the `array` within the `data` structure. This symbolic data is then assumed to meet certain conditions to guide the symbolic execution.
 
-#### Assumptions
+#### [Assumptions](https://github.com/yashrb24/popl-project/blob/main/tests/memory_bounds_check.c#L44)
 
 The code includes an assumption (`klee_assume`) on the `offset` field to limit its possible values. This is a common technique in symbolic execution to reduce the state space and make the analysis more manageable.
+Exploding state space can be a real problem with large codebases for symbolic execution.
 
 #### Conditional Check
 
 The program performs a conditional check based on the symbolic data. If the value at a specific offset in the `array` is equal to the ASCII value of 'a', it prints "true"; otherwise, it prints "false."
-
-### Notes
-
-- Symbolic execution is a powerful technique for exploring different program paths and identifying potential issues without the need for concrete inputs.
-- The code assumes familiarity with KLEE and symbolic execution concepts.
-- Ensure that KLEE is properly installed and configured to run this code.
-- The provided assumptions on symbolic data and conditional checks should be adjusted based on the specific requirements of the program under test.
