@@ -114,6 +114,10 @@ The code includes a verification block using the Kani proof system. The `verify_
 
 - This implementation focuses on simplicity and may not handle all edge cases or optimizations.
 
+  
+## [Custom Malloc For KLEE Verification(custom_malloc.c)](https://github.com/yashrb24/popl-project/blob/main/code-orig/custom_malloc.c)
+
+
 
 ## Symbolic Execution Test in C
 
