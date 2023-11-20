@@ -2,16 +2,20 @@
 ### 1. Problem Statement:
 
 - **Original Statement:**
-  - The problem revolves around symbolic execution testing using KLEE. The POPL (Principles of Programming Languages) angle is in exploring different program paths without concrete inputs. This is a common challenge in software testing.
+  - Porting operating system code from C/C++ to Rust is a growing trend in systems programming, due to how Rust offers Memory Safety and Concurrency Safety. Our objective is to employ formal verification methods, including model checking and symbolic execution, to rigorously assess and make claims about specific memory safety properties of a C/C++ codebase that has been ported to Rust. 
 
 - **POPL Angle:**
-  - The POPL angle lies in the symbolic execution technique, aiming to analyze the code without actual inputs.
+  - The Principles of Programming Languages angle is in exploring different program paths without concrete inputs. This is a common challenge in software testing. Using formal verification techniques we verified code with different programming language concepts like:
+    - Memory Safety: Rust prevents memory-related errors like null pointer dereferences and buffer overflows through its ownership system.
+    - Ownership and Borrowing: Rust's ownership system ensures exclusive ownership of data, preventing data races, while borrowing allows safe temporary access.
+    - Zero-Cost Abstractions: Rust allows expressive high-level abstractions without sacrificing runtime performance.
+    - Type System and Static Typing: Rust's strong type system catches errors at compile time, improving code reliability.
 
 - **Previous Solutions:**
-  - It doesn't explicitly mention previous solutions, but symbolic execution and testing tools like KLEE are well-established in the field.
+  - Symbolic execution and testing tools like KLEE are well-established in the field of formal verification, but they have rarely been used to verify hybrid Rust and C/C++ codebases.
 
 - **Differences in Your Solution:**
-  - The unique aspect here is the application of symbolic execution to a specific C code snippet involving memory operations and conditional checks.
+  - The unique aspect here is the application of symbolic execution to hybrid Rust and C/C++ code snippets involving memory operations in the heap and in global uninitialized data space.
 
 ### 2. Software Architecture:
 
@@ -22,7 +26,7 @@
   - It primarily uses standard C libraries and KLEE for symbolic execution. The test function is developed for this specific purpose.
 
 - **Client-Server or Local/Remote Testing:**
-  - It doesn't involve client-server architecture. Testing is done within the C file, and KLEE operates locally.
+  - It doesn't involve client-server architecture. KLEE and Kani both operate locally.
 
 - **Database Involvement:**
   - No database is involved in this specific implementation.
