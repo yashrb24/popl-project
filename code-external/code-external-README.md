@@ -1,6 +1,6 @@
 ## Kani Rust Verifier
 ### Installation Guide
-Check out the installation guide [here](https://github.com/model-checking/kani](https://model-checking.github.io/kani/install-guide.html)https://model-checking.github.io/kani/install-guide.html)
+Check out the installation guide [here](https://model-checking.github.io/kani/install-guide.html)
 
 ### Overview
 - Kani, an open-source verification tool, employs [model checking](https://en.wikipedia.org/wiki/Model_checking) to scrutinize Rust programs
