@@ -69,7 +69,7 @@
 
 - **Additional POPL Aspects:**
   - Placeholder: Further investigation into advanced POPL concepts related to symbolic execution could be considered for future work.
-## [LinkedList Implementation in Rust](https://github.com/yashrb24/popl-project/blob/main/code-orig/Linked_List_Example.rs)
+## [LinkedList Implementation in Rust(Linked_List_Example.rs)](https://github.com/yashrb24/popl-project/blob/main/code-orig/Linked_List_Example.rs)
 
 ### Overview
 
@@ -77,30 +77,26 @@ This Rust code provides a basic implementation of a singly linked list. The link
 
 ### Code Structure
 
-#### Node Struct
+#### [Node Struct](https://github.com/yashrb24/popl-project/blob/main/code-orig/Linked_List_Example.rs#L1)
 
 The `Node` struct represents a single node in the linked list. It has two fields:
 - `data`: An integer value associated with the node.
-- `next`: A mutable raw pointer (`*mut Node`) pointing to the next node in the list.
+- `next`: A mutable raw pointer (`*mut Node`) pointing to the next node in the list. We used mutable raw pointers so that we can introduce unsafe operations.
 
-#### LinkedList Struct
+#### [LinkedList Struct](https://github.com/yashrb24/popl-project/blob/main/code-orig/Linked_List_Example.rs#L12)
 
 The `LinkedList` struct represents the entire linked list and contains a mutable raw pointer to the head of the list. It includes methods for initializing an empty linked list (`new`), appending a node to the end of the list (`append`), and printing the elements of the list (`print`).
 
 #### Functions
 
-- `Node::new(data: i32) -> Self`: A constructor for creating a new node with the given integer value.
-- `LinkedList::new() -> Self`: A constructor for creating a new, empty linked list.
-- `LinkedList::append(&mut self, data: i32)`: Appends a new node with the specified data to the end of the linked list.
-- `LinkedList::print(&self)`: Prints the elements of the linked list.
+- [`Node::new(data: i32) -> Self`](https://github.com/yashrb24/popl-project/blob/main/code-orig/Linked_List_Example.rs#L7): A constructor for creating a new node with the given integer value.
+- [`LinkedList::new() -> Self`](https://github.com/yashrb24/popl-project/blob/main/code-orig/Linked_List_Example.rs#L17): A constructor for creating a new, empty linked list.
+- [`LinkedList::append(&mut self, data: i32)`](https://github.com/yashrb24/popl-project/blob/main/code-orig/Linked_List_Example.rs#L21): Appends a new node with the specified data to the end of the linked list.
+- [`LinkedList::print(&self)`](https://github.com/yashrb24/popl-project/blob/main/code-orig/Linked_List_Example.rs#L36): Prints the elements of the linked list.
 
-#### do_stuff Function
+#### [do_stuff Function](https://github.com/yashrb24/popl-project/blob/main/code-orig/Linked_List_Example.rs#L47)
 
-The `do_stuff` function demonstrates the usage of the linked list by creating an instance of `LinkedList`, appending three nodes with values 1, 2, and 3, and then printing the elements of the list.
-
-### Safety Considerations
-
-The code uses unsafe Rust features due to the manual management of raw pointers. Care must be taken to ensure that operations involving raw pointers are safe and do not lead to memory safety issues.
+The `do_stuff` function demonstrates the usage of the linked list by creating an instance of `LinkedList`, appending three nodes with values 1, 2, and 3, and then printing the elements of the list. This is the function that we are checking using Kani for null pointer dereferences. The code uses unsafe Rust features due to the manual management of raw pointers. In real code, care must be taken to ensure that operations involving raw pointers are safe and do not lead to memory safety issues.
 
 ### Building and Running
 
@@ -110,15 +106,14 @@ To build and run the code, ensure you have a Rust environment set up. Then, comp
 cargo run
 ```
 
-### Verification
+### [Verification](https://github.com/yashrb24/popl-project/blob/main/code-orig/Linked_List_Example.rs#L62)
 
-The code includes an optional verification block using the Kani proof system. The `verify_success` function demonstrates how the linked list can be used, providing a simple proof of correctness.
+The code includes a verification block using the Kani proof system. The `verify_success` function tests the `do_stuff` function, providing a simple proof of null pointer dereference.
 
 ### Notes
 
 - This implementation focuses on simplicity and may not handle all edge cases or optimizations.
-- Use caution when working with unsafe Rust features, and consider alternatives like `Rc` and `RefCell` for more idiomatic memory management.
-- This readme assumes basic familiarity with Rust and linked list data structures.
+
 
 ## Symbolic Execution Test in C
 
