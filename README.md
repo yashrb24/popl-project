@@ -117,7 +117,7 @@ Check out the installation guide [here](https://model-checking.github.io/kani/in
 
 #### Overview
 - Kani, an open-source verification tool, employs [model checking](https://en.wikipedia.org/wiki/Model_checking) to scrutinize Rust programs
-- Its forte verifies unsafe code segments in Rust, where the compiler's "unsafe superpowers" remain unchecked
+- Its forte lies in verifying unsafe code segments in Rust, where the compiler's "unsafe superpowers" remain unchecked
 - Examples of properties that Kani can validate include:
   - Ensuring memory safety (such as null pointer dereferences and use-after-free scenarios)
   - The absence of specific runtime errors (like index out of bounds and panics)
