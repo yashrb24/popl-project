@@ -11,7 +11,11 @@ Check out the installation guide [here]([https://github.com/model-checking/kani]
   - The prevention of unexpected behaviours like arithmetic overflows
 - Moreover, Kani can substantiate customized properties specified through user assertions
 - Employing model checking, Kani either confirms the property, refutes it (providing a counterexample), or might exhaust available resources
-- Kani relies on proof harnesses for program analysis, akin to test harnesses, particularly those centred on properties.
+- Kani relies on proof harnesses for program analysis, akin to test harnesses, particularly those centred on properties
+
+### Usage
+- In order to demonstrate the usage of Kani, we have used `Linked_List.rs` as a sample code
+- To verify this using Kani, run the command `kani --harness verify_success Linked_List_Example.rs`
 
 
 
