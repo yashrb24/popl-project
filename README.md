@@ -15,7 +15,7 @@
     - Type System and Static Typing: Rust's strong type system catches errors at compile time, improving code reliability.
 
 - **Previous Solutions:**
-  - Symbolic execution and testing tools like KLEE are well-established in the field of formal verification, but they have rarely been used to verify hybrid Rust and C/C++ codebases.
+  - Symbolic execution and testing tools like KLEE are well-established in the field of formal verification, but they have rarely been used to verify hybrid Rust and C/C++ codebases. //TODO: Add prev literature
 
 - **Differences in Your Solution:**
   - The unique aspect here is the application of symbolic execution to hybrid Rust and C/C++ code snippets involving memory operations in the heap and in global uninitialized data space.
@@ -23,8 +23,8 @@
 ### 2. Software Architecture:
 
 - **Architecture Overview:**
-  - The architecture involves a single C file with a test function. It doesn't explicitly mention a broader system architecture.
-
+  - The architecture of the provided C code is concise, encapsulated within a single file named main.c. This file contains a data structure (data) representing an offset and an array of integers, along with a memory array (data_memory) allocated for symbolic execution. The code utilizes standard C libraries, as well as the KLEE symbolic execution engine for testing purposes. The main execution flow is centered around the test function, serving as the entry point, where symbolic data is generated, assumptions are applied, and symbolic execution is conducted using KLEE. Despite the absence of external interfaces or complex system interactions, the architecture efficiently demonstrates the core components and their relationships, emphasizing symbolic execution within a self-contained C file.
+  - 
 - **Reused vs. Developed:**
   - It primarily uses standard C libraries and KLEE for symbolic execution. The test function is developed for this specific purpose.
 
