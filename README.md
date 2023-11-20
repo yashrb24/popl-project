@@ -116,6 +116,9 @@ The code includes a verification block using the Kani proof system. The `verify_
 
   
 ## [Custom Malloc For KLEE Verification(custom_malloc.c)](https://github.com/yashrb24/popl-project/blob/main/code-orig/custom_malloc.c)
+
+### Overview
+
 - To enable verification with tools like KLEE, the code necessitates memory allocation on the stack rather than the heap. The conventional malloc function, which allocates
 memory on the heap and returns its pointer, isn't compatible with this verification process.
 - To address this, a custom malloc function has been written by us. This implementation allocates memory within a global buffer, aiming to replicate the memory allocation behaviour of the original malloc. For developers, the change is minimal—simply substituting custom_malloc for malloc when requesting memory. The specifics of how and where memory is obtained remain opaque to the developer, akin to malloc. KLEE can successfully work on this global buffer.
