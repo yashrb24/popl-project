@@ -52,7 +52,7 @@
 ### 4. Results and Testing:
 
 - **Preliminary Tests Conducted:**
-  - We used the `test.rs` file to check whether Kani detects a null pointer dereference in the code.
+  - We used the [test.rs](https://github.com/yashrb24/popl-project/blob/main/tests/test.rs) file to check whether Kani detects a null pointer dereference in the code.
   - We used the hybrid folder in the code external directory to test the linking of the Rust code with the C code. 
 
 - **KLEE tests:**
