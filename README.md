@@ -30,32 +30,22 @@
   - KLEE: custom_malloc code to check for memory_out_of_bounds errors. There is also a hybrid code that consists of the linked_list implemented in Rust and append function implemented in C which is called in the rust code through FFI
 
 ### 3. POPL Aspects:
-
-- **Symbolic Execution in KLEE:**
-  - Symbolic execution is performed in the `test` function using KLEE. Lines 26-28 symbolize the offset and array, initiating symbolic execution.
-
-- **Assumptions and Constraints:**
-  - Assumptions are made on the offset (line 30), restricting it to a set of values. This is a common POPL practice to manage state space.
-
-- **Memory Access Safety:**
-  - Memory access safety is crucial in lines 14-16, ensuring that symbolic data is accessed safely without causing memory issues.
-
-- **Conditional Checks:**
-  - The conditional check on line 32 involves symbolic data, representing a POPL aspect where conditions are explored symbolically.
+- ** Memory Safety ** : We try to take advantage Rust's ownership, borrowing and lifetime system to ensure memory safety in the ported codebase, thereby mitigating common memory-related pitfalls like null pointer dereferencing and memory leaks which are usually problems in a pure C codebase. In our examples we use a linked list implemented in Rust to take advantage of its memory safety guarantees. 
+- ** Symbolic Execution ** : We use KLEE which is an LLVM based symbolic execution engine to test the C code for memory out of bounds errors. We use the functions `klee_make_symbolic` and `klee_assume` to create symbolic data and to assume certain conditions on the symbolic data to guide the symbolic execution. We are also using klee_check_memory_access to specifically check for memory out of bounds errors. 
+- ** Model Checking ** : We are using Kani which is a model checker for Rust to check for null pointer dereferences in the Rust code. Kani specializes in checking memory unsafe Rust code. This is important for us since we are trying to port C code to Rust and we want to ensure that the Rust code which includes `unsafe` blocks is memory safe.
+- ** Hybrid Linking ** : We are using FFI to link the Rust code with the C code. We are using the `#[no_mangle]` attribute to ensure that the function name is not mangled by the compiler. We are also using the `extern` keyword to indicate that the function is implemented outside of Rust.
+- ** Choice of Programming Paradigms ** :  Implementation of a certain functionality in Rust or C/C++ is decided based on the programming paradigm that is best suited for the task. Each programming language has its pros and cons and in our use case Rust offers memory safety but many codebases have not been converted to Rust which will take a lot of time and require a lot of testing to ensure that the functionality is preserved. C on the other hand is widely used in many codebases and is a low level language which is not memory safe. 
+- ** Data Structures ** : In our examples we are testing it on a linked list implementation which we have written in Rust. In many codebases data structures are crucial to the code and are often included in header files which are written in C which is the parent language here. We try to include the Rust implemented linked list inside the C code to test whether we can use data structures implemented in Rust in C codebases.
+- ** Object-Oriented Programming Principles ** : We have implemented a linked list according to the object oriented programming principles in Rust. We have used structs to encapsulate the data and functions to operate on the data. We have also used the `impl` keyword to implement the functions.
 
 ### 4. Results and Testing:
 
-- **Tests Conducted:**
-  - The test function conducts symbolic execution tests on the `data` structure.
+- **Preliminary Tests Conducted:**
+  - We used the `test.rs` file to check whether Kani detects a null pointer dereference in the code.
+  - We used the hybrid folder in the code external directory to test the linking of the Rust code with the C code. 
 
-- **Datasets Used:**
-  - It uses symbolic data as a dataset for testing, generated with KLEE's symbolic execution.
-
-- **Benchmark Results:**
-  - No explicit benchmark results or graphs are provided. Visualization of KLEE's output could be considered for a more comprehensive analysis.
-
-- **Validation:**
-  - The validation relies on the output of the conditional check, indicating whether the symbolic execution behaves as expected.
+- **KLEE tests:**
+  - We implemented a custom_malloc function in C to check whether KLEE detected memory out of bounds errors. We also aim to apply it in future work to combined Rust and C LLVM bitcode to verify hybrid code.
 
 ### 5. Potential for Future Work Given More Time:
 
