@@ -5,7 +5,8 @@
 ### 1. Problem Statement:
 
 - **Original Statement:**
-  - Porting operating system code from C/C++ to Rust is a growing trend in systems programming due to how Rust offers Memory and Concurrency Safety. We aim to employ formal verification methods, including model checking and symbolic execution, to rigorously assess and make claims about specific memory safety properties of a C/C++ codebase that has been ported to Rust. 
+  - Porting code from C/C++ to Rust is a growing trend in systems programming due to how Rust offers Memory and Concurrency Safety. One such example is the [Rust For Linux](https://rust-for-linux.com/) project that adds Rust as a second programming language to C for writing kernel components.
+  - We aim to employ formal verification methods, including model checking and symbolic execution, to ensure the correctness of memory safety properties and functional correctness of certain properties across the C/C++ and ported Rust code
 
 - **POPL Angle:**
   - **Integration of the best aspects of the two programming languages**: Here, we are integrating C++ and Rust to improve the performance and reliability of our code.
