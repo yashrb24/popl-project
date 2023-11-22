@@ -136,9 +136,9 @@ The code reserves a block of memory (`data_memory`) in uninitialized global data
 
 #### Functions used
 
-- [`check(void* start, unsigned int size_bytes, const char* name)`](https://github.com/yashrb24/popl-project/blob/main/tests/code-orig/custom_malloc.c#L20): A helper function to create symbolic data within a specified range and test for memory out of bounds.
+- [`check(void* start, unsigned int size_bytes, const char* name)`](https://github.com/yashrb24/popl-project/blob/main/code-orig/custom_malloc.c#L20): A helper function to create symbolic data within a specified range and test for memory out of bounds.
 - [`custom_malloc(int size)`](https://github.com/yashrb24/popl-project/blob/main/code-orig/custom_malloc.c#L32): This function attempts to allocate at `size * block` location of data_memory, where block is of size 64 bytes. Successful execution returns a pointer to the starting address of the allocated memory.
-- - [`int main()`](https://github.com/yashrb24/popl-project/blob/main/code-orig/custom_malloc.c#L43): The `custom_malloc` function is called for a given `size`. On **success**, The program performs a conditional check based on the symbolic data. If the value at a specific offset in the `array` is equal to the ASCII value of 'a', it prints "true"; otherwise, it prints "false."
+- [`int main()`](https://github.com/yashrb24/popl-project/blob/main/code-orig/custom_malloc.c#L43): The `custom_malloc` function is called for a given `size`. On **success**, The program performs a conditional check based on the symbolic data. If the value at a specific offset in the `array` is equal to the ASCII value of 'a', it prints "true"; otherwise, it prints "false."
 
 
 #### [Assumptions](https://github.com/yashrb24/popl-project/blob/main/code-orig/custom_malloc.c#L38)
