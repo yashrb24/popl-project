@@ -116,7 +116,7 @@ The code includes a verification block using the Kani proof system. The `verify_
 
 - This implementation focuses on simplicity and may not handle all edge cases or optimizations.
 
-## [Symbolic Execution Test in C](https://github.com/yashrb24/popl-project/blob/main/tests/memory_bounds_check.c)
+## [Symbolic Execution Test in C](https://github.com/yashrb24/popl-project/blob/main/code-orig/custom_malloc.c)
 
 ### Overview
 
@@ -124,38 +124,27 @@ This C code snippet utilizes the KLEE symbolic execution engine to test a progra
 
 ### Code Structure
 
-#### [Data Structure](https://github.com/yashrb24/popl-project/blob/main/tests/memory_bounds_check.c#L13)
+#### [Data Structure](https://github.com/yashrb24/popl-project/blob/main/code-orig/custom_malloc.c#L12)
 
 The `data` structure includes:
 - `offset`: An unsigned integer indicating an offset.
 - `array`: An array of unsigned integers with a maximum size of `MAX_SIZE`.
 
-#### [Memory](https://github.com/yashrb24/popl-project/blob/main/tests/memory_bounds_check.c#L18)
+#### [Memory](https://github.com/yashrb24/popl-project/blob/main/code-orig/custom_malloc.c#L18)
 
 The code reserves a block of memory (`data_memory`) in uninitialized global data space to be used for symbolic execution.
 
-#### Symbolic Execution Functions
+#### Functions used
 
-- [`klee_make_symbolic_range(void* addr, unsigned int offset, unsigned int nbytes, const char* name)`](https://github.com/yashrb24/popl-project/blob/main/tests/memory_bounds_check.c#L20): A helper function to create symbolic data within a specified range.
-- [`test()`](https://github.com/yashrb24/popl-project/blob/main/tests/memory_bounds_check.c#L36): The main function for testing. It creates a symbolic `data` structure, assumes certain conditions on the symbolic data, and then performs a conditional check.
+- [`check(void* start, unsigned int size_bytes, const char* name)`](https://github.com/yashrb24/popl-project/blob/main/tests/code-orig/custom_malloc.c#L20): A helper function to create symbolic data within a specified range and test for memory out of bounds.
+- [`custom_malloc(int size)`](https://github.com/yashrb24/popl-project/blob/main/code-orig/custom_malloc.c#L32): This function attempts to allocate at `size * block` location of data_memory, where block is of size 64 bytes. Successful execution returns a pointer to the starting address of the allocated memory.
+- - [`int main()`](https://github.com/yashrb24/popl-project/blob/main/code-orig/custom_malloc.c#L43): The `custom_malloc` function is called for a given `size`. On **success**, The program performs a conditional check based on the symbolic data. If the value at a specific offset in the `array` is equal to the ASCII value of 'a', it prints "true"; otherwise, it prints "false."
 
-### KLEE Symbolic Execution
 
-KLEE is a symbolic execution engine that analyzes a program to explore different paths and conditions without executing the program on concrete inputs. This allows testing various scenarios and identifying potential issues.
-
-#### [Symbolic Data Generation](https://github.com/yashrb24/popl-project/blob/main/tests/memory_bounds_check.c#L40)
-
-The `klee_make_symbolic_range` function is used to create symbolic data for the `offset` and the `array` within the `data` structure. This symbolic data is then assumed to meet certain conditions to guide the symbolic execution.
-
-#### [Assumptions](https://github.com/yashrb24/popl-project/blob/main/tests/memory_bounds_check.c#L44)
+#### [Assumptions](https://github.com/yashrb24/popl-project/blob/main/code-orig/custom_malloc.c#L38)
 
 The code includes an assumption (`klee_assume`) on the `offset` field to limit its possible values. This is a common technique in symbolic execution to reduce the state space and make the analysis more manageable.
 Exploding state space can be a real problem with large codebases for symbolic execution.
-
-#### Conditional Check
-
-The program performs a conditional check based on the symbolic data. If the value at a specific offset in the `array` is equal to the ASCII value of 'a', it prints "true"; otherwise, it prints "false."
-
 
 
 ## [FAILED ATTEMPT] [Custom Malloc For KLEE Verification(custom_malloc.c)](https://github.com/yashrb24/popl-project/blob/main/code-orig/alternate_wip_custom_malloc.c)
