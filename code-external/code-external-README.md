@@ -44,7 +44,7 @@ Use the docker installation as that works out of the box, Ensure docker is insta
      clang -emit-llvm -c -g your_code.c -o your_code.bc
      ```
    - Note that klee currently works with llvm 13 and clang 13 so if you want to run this outside the docker container, ensure the clang       version is clang 13
-   - To install clang 13 and llvm 13 on ubuntu run
+   - To install clang 13 and llvm 13 on recent Ubuntu (e.g. 21.10) or Debian run
      ```bash
      sudo apt-get install clang-13 llvm-13 llvm-13-dev llvm-13-tools
      ```
