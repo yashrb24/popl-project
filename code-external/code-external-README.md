@@ -23,7 +23,7 @@ Check out the installation guide [here](https://model-checking.github.io/kani/in
 ## KLEE Symbolic Execution Engine
 
 ### Installation Guide
-Check out the installation guide [here](https://klee.github.io/docker/)
+Check out the installation guide [here](https://klee.github.io/docker/)\
 Use the docker installation as that works out of the box, Ensure docker is installed in the system before this
 
 ### Overview
