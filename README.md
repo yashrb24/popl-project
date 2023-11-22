@@ -30,6 +30,10 @@
   - KLEE: custom_malloc code to check for memory_out_of_bounds errors. There is also a hybrid code that consists of the linked_list implemented in Rust and the append function implemented in C, which is called in the Rust code through FFI
 
 ### 3. POPL Aspects:
+
+Note: We have given references along with an explanation to the specific code lines for the given aspects. 
+
+
 - **Memory Safety**: We try to take advantage of Rust's ownership, borrowing and lifetime system to ensure memory safety in the ported codebase, thereby mitigating common memory-related pitfalls like null pointer dereferencing and memory leaks, which are usually problems in a pure C codebase. Our examples use a linked list implemented in Rust to take advantage of its memory safety guarantees.
 
 - **Symbolic Execution**: We use KLEE, an LLVM-based symbolic execution engine, to test the C code for memory out-of-bounds errors. We use the functions `klee_make_symbolic` and `klee_assume` to create symbolic data and to assume certain conditions on the symbolic data to guide the symbolic execution. We are also using klee_check_memory_access to check for memory out-of-bounds errors.
