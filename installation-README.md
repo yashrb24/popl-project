@@ -63,11 +63,6 @@ Use the docker installation as that works out of the box, Ensure docker is insta
      ```bash
      klee your_code.bc
      ```
-
-
-
-
-
-
-
-
+     
+## Hybrid Code
+- We referred to this [guide](https://kmdouglass.github.io/posts/complex-data-types-and-the-rust-ffi/) for linking hybrid Rust and C code
