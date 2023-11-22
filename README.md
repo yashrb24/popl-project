@@ -5,17 +5,19 @@
 ### 1. Problem Statement:
 
 - **Original Statement:**
-  - Porting operating system code from C/C++ to Rust is a growing trend in systems programming, due to how Rust offers Memory Safety and Concurrency Safety. Our objective is to employ formal verification methods, including model checking and symbolic execution, to rigorously assess and make claims about specific memory safety properties of a C/C++ codebase that has been ported to Rust. 
+  - Porting operating system code from C/C++ to Rust is a growing trend in systems programming due to how Rust offers Memory and Concurrency Safety. We aim to employ formal verification methods, including model checking and symbolic execution, to rigorously assess and make claims about specific memory safety properties of a C/C++ codebase that has been ported to Rust. 
 
 - **POPL Angle:**
-  - The Principles of Programming Languages angle is in exploring different program paths without concrete inputs. This is a common challenge in software testing. Using formal verification techniques we verified code with different programming language concepts like:
-    - Memory Safety: Rust prevents memory-related errors like null pointer dereferences and buffer overflows through its ownership system.
-    - Ownership and Borrowing: Rust's ownership system ensures exclusive ownership of data, preventing data races, while borrowing allows safe temporary access.
+  - **Integration of the best aspects of the two programming languages**: Here, we are integrating C++ and Rust to improve the performance and reliability of our code.
+  - **Exploring different program paths without concrete inputs**: This is a common challenge in software testing. Using formal verification techniques, we verified code with different programming language concepts like:
+    - Memory Safety: Rust prevents memory-related errors like null pointer dereferences, and buffer overflows through its ownership system.
+    - Ownership and Borrowing: Rust's ownership system ensures exclusive data ownership, preventing data races, while borrowing allows safe temporary access.
     - Zero-Cost Abstractions: Rust allows expressive high-level abstractions without sacrificing runtime performance.
     - Type System and Static Typing: Rust's strong type system catches errors at compile time, improving code reliability.
 
 - **Previous Solutions:**
-  - Symbolic execution and testing tools like KLEE are well-established in the field of formal verification, but they have rarely been used to verify hybrid Rust and C/C++ codebases. //TODO: Add prev literature
+  - Symbolic execution and testing tools like KLEE are well-established in formal verification, but they have rarely been used to verify hybrid Rust and C/C++ codebases
+  - Some papers which discuss similar problems can be found [here](https://dl.acm.org/doi/abs/10.1145/1629575.1629596) and [here](https://accelconf.web.cern.ch/icalepcs2019/papers/wecpr02.pdf)
 
 - **Differences in Your Solution:**
   - The unique aspect here is the application of symbolic execution to hybrid Rust and C/C++ code snippets involving memory operations in the heap and in global uninitialized data space.
