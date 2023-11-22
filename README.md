@@ -9,7 +9,7 @@
   - We aim to employ formal verification methods, including model checking and symbolic execution, to ensure the correctness of memory safety properties and functional correctness of certain properties across the C/C++ and ported Rust code
 
 - **POPL Angle:**
-  - **Integration of the best aspects of the two programming languages**: Here, we are integrating C++ and Rust to improve the performance and reliability of our code.
+  - **Integration of the best aspects of the two programming languages**: The project aims at porting C codebases to Rust in order to achieve the memory safety guarantees provided by Rust, while making minimal changes to the legacy code. 
   - **Exploring different program paths without concrete inputs**: This is a common challenge in software testing. Using formal verification techniques, we verified code with different programming language concepts like:
     - Memory Safety: Rust prevents memory-related errors like null pointer dereferences, and buffer overflows through its ownership system.
     - Ownership and Borrowing: Rust's ownership system ensures exclusive data ownership, preventing data races, while borrowing allows safe temporary access.
