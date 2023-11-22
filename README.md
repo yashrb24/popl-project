@@ -51,25 +51,16 @@
 
 - **Extended Features:**
 1. **Enhanced Symbolic Execution:**
-   - Investigate advanced features and optimizations in symbolic execution engines like KLEE.
+   - Investigate advanced features in symbolic execution engines like KLEE. We want to compile hybrid Rust code into LLVM bitcode while also linking all the necessary libraries not supported by LLVM Linker.  
 
 2. **Integration with Larger Codebases:**
    - Extend the symbolic testing approach to larger and more complex codebases to evaluate scalability and applicability, and collaborate with the other group to test ported real world code.
 
-3. **Dynamic Analysis:**
-   - Incorporate dynamic analysis techniques to complement symbolic execution, providing a more comprehensive understanding of program behavior.
+3. **Property-Based Testing Scope:**
+   - Extend the project's scope to support more property-based testing, enabling the specification of properties to be checked during symbolic execution.
 
-4. **Property-Based Testing:**
-   - Extend the project to support property-based testing, enabling the specification of properties to be checked during symbolic execution.
-
-5. **Benchmarking and Evaluation:**
+4. **Benchmarking and Evaluation:**
    - Establish a comprehensive benchmark suite and evaluate the performance of the symbolic execution engine on various types of programs and real-world use cases.
-
-6. **Concurrency and Parallel Symbolic Execution:**
-   - Explore techniques for handling concurrent and parallel code in symbolic execution to address challenges in modern multi-threaded applications.
-
-7. **Security Analysis:**
-    - Extend the project to include security-focused symbolic execution, identifying vulnerabilities and security issues in code.
 
 ## [Model Checking in Rust](https://github.com/yashrb24/popl-project/blob/main/code-orig/kani_linked_list.rs)
 
