@@ -34,24 +34,24 @@
 Note: We have given references along with an explanation to the specific code lines for the given aspects. 
 
 
-- **Memory Safety**: We try to take advantage of Rust's ownership, borrowing and lifetime system to ensure memory safety in the ported codebase, thereby mitigating common memory-related pitfalls like null pointer dereferencing and memory leaks, which are usually problems in a pure C codebase. Our examples use a linked list implemented in Rust to take advantage of its memory safety guarantees.
+- **Memory Safety**: We try to take advantage of Rust's ownership, borrowing and lifetime system to ensure memory safety in the ported codebase, thereby mitigating common memory-related pitfalls like null pointer dereferencing and memory leaks, which are usually problems in a pure C codebase. Our examples use a [`linked list`](https://github.com/yashrb24/popl-project/blob/main/code-orig/kani_linked_list.rs#) implemented in Rust to take advantage of its memory safety guarantees.
 
-- **Symbolic Execution**: We use KLEE, an LLVM-based symbolic execution engine, to test the C code for memory out-of-bounds errors. We use the functions `klee_make_symbolic` and `klee_assume` to create symbolic data and to assume certain conditions on the symbolic data to guide the symbolic execution. We are also using klee_check_memory_access to check for memory out-of-bounds errors.
+- **Symbolic Execution**: We use KLEE, an LLVM-based symbolic execution engine, to test the C code for memory out-of-bounds errors. We use the functions [`klee_make_symbolic`](https://github.com/yashrb24/popl-project/blob/main/code-orig/custom_malloc.c#L26) and [`klee_assume`](https://github.com/yashrb24/popl-project/blob/main/code-orig/custom_malloc.c#L38) to create symbolic data and to assume certain conditions on the symbolic data to guide the symbolic execution. We are also using [`klee_check_memory_access`](https://github.com/yashrb24/popl-project/blob/main/code-orig/custom_malloc.c#L24) to check for memory out-of-bounds errors.
 
 
-- **Model Checking**: We are using Kani, a model checker for Rust, to check for null pointer dereferences in the Rust code. Kani specializes in checking memory unsafe Rust code. This is important for us since we are trying to port C code to Rust, and we want to ensure that the Rust code, which includes `unsafe` blocks, is memory-safe.
+- **Model Checking**: We are using Kani, a model checker for Rust, to check for null pointer dereferences in the Rust code. Kani specializes in checking memory unsafe Rust code. This is important for us since we are trying to port C code to Rust, and we want to ensure that the Rust code, which includes [`unsafe`](https://github.com/yashrb24/popl-project/blob/main/code-orig/kani_linked_list.rs#L53) blocks, is memory-safe.
 
   
-- **Hybrid Linking**: We use FFI to link the Rust code with the C code. We use the `#[no_mangle]` attribute to ensure the compiler does not mangle the function name. We also use the `extern` keyword to indicate that the function is implemented outside of Rust.
+- **Hybrid Linking**: We use FFI to link the [`Rust code`](https://github.com/yashrb24/popl-project/blob/main/code-external/hybrid/rstruct/src/lib.rs) with the [`C code`](https://github.com/yashrb24/popl-project/blob/main/code-external/hybrid/tree/main.rs). We use the [`#[no_mangle]`](https://github.com/yashrb24/popl-project/blob/main/code-external/hybrid/rstruct/src/lib.rs#L17) attribute to ensure the compiler does not mangle the function name. We also use the `extern` keyword to indicate that the function is implemented outside of Rust.
 
   
 - **Choice of Programming Paradigms**:  Implementation of a certain functionality in Rust or C/C++ is decided based on the programming paradigm that is best suited for the task. Each programming language has pros and cons; in our use case, Rust offers memory safety. Still, many codebases have not been converted to Rust, which will take a lot of time and require a lot of testing to ensure that the functionality is preserved. On the other hand, C is widely used in many codebases and is a low-level language that is not memory-safe.
 
   
-- **Data Structures**: In our examples, we are testing it on a linked list implementation, which we have written in Rust. In many codebases, data structures are crucial to the code and are often included in header files written in C, the parent language here. We should include the Rust-implemented linked list inside the C code to test whether we can use data structures implemented in Rust in C codebases.
+- **Data Structures**: In our examples, we are testing it on a [`linked list`](https://github.com/yashrb24/popl-project/blob/main/code-orig/kani_linked_list.rs#L12), which we have written in Rust. In many codebases, data structures are crucial to the code and are often included in header files written in C, the parent language here. We should include the Rust-implemented linked list inside the C code to test whether we can use data structures implemented in Rust in C codebases.
 
   
-- **Object-Oriented Programming Principles**: We have implemented a linked list according to the object-oriented programming principles in Rust. We have used structs to encapsulate the data and functions to operate on the data. We have also used the `impl` keyword to implement the functions.
+- **Object-Oriented Programming Principles**: We have implemented a [`linked list`](https://github.com/yashrb24/popl-project/blob/main/code-orig/kani_linked_list.rs#L12) according to the object-oriented programming principles in Rust. We have used structs to encapsulate the data and functions to operate on the data. We have also used the `impl` keyword to implement the functions.
 
 ### 4. Results and Testing:
 
