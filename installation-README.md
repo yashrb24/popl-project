@@ -15,9 +15,9 @@ Check out the installation guide [here](https://model-checking.github.io/kani/in
 
 ### Usage
 - To demonstrate the usage of Kani, we have used `Linked_List.rs` as a sample code
-- To verify this using Kani, run the command `kani --harness verify_success Linked_List_Example.rs`
+- To verify this using Kani, run the command `kani --harness verify_success kani_linked_list.rs`
 - The expected output here is `VERIFICATION:- FAILED`
-- This is because we are making a null pointer [dereference](https://github.com/yashrb24/popl-project/blob/main/code-orig/Linked_List_Example.rs#L58)
+- This is because we are making a null pointer [dereference](https://github.com/yashrb24/popl-project/blob/main/code-orig/kani_linked_list.rs#L58)
 
 
 ## KLEE Symbolic Execution Engine
@@ -43,7 +43,7 @@ Use the docker installation as that works out of the box, Ensure docker is insta
      ```bash
      clang -emit-llvm -c -g your_code.c -o your_code.bc
      ```
-   - Note that klee currently works with llvm 13 and clang 13 so if you want to run this outside the docker container, ensure the clang       version is clang 13
+   - Note that klee currently works with llvm 13 and clang 13 so if you want to run this outside the docker container, ensure the clang version is clang 13
    - To install clang 13 and llvm 13 on recent Ubuntu (e.g. 21.10) or Debian run
      ```bash
      sudo apt-get install clang-13 llvm-13 llvm-13-dev llvm-13-tools
