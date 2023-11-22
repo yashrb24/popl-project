@@ -30,13 +30,13 @@
   - KLEE: custom_malloc code to check for memory_out_of_bounds errors. There is also a hybrid code that consists of the linked_list implemented in Rust and append function implemented in C which is called in the rust code through FFI
 
 ### 3. POPL Aspects:
-- ** Memory Safety ** : We try to take advantage Rust's ownership, borrowing and lifetime system to ensure memory safety in the ported codebase, thereby mitigating common memory-related pitfalls like null pointer dereferencing and memory leaks which are usually problems in a pure C codebase. In our examples we use a linked list implemented in Rust to take advantage of its memory safety guarantees. 
-- ** Symbolic Execution ** : We use KLEE which is an LLVM based symbolic execution engine to test the C code for memory out of bounds errors. We use the functions `klee_make_symbolic` and `klee_assume` to create symbolic data and to assume certain conditions on the symbolic data to guide the symbolic execution. We are also using klee_check_memory_access to specifically check for memory out of bounds errors. 
-- ** Model Checking ** : We are using Kani which is a model checker for Rust to check for null pointer dereferences in the Rust code. Kani specializes in checking memory unsafe Rust code. This is important for us since we are trying to port C code to Rust and we want to ensure that the Rust code which includes `unsafe` blocks is memory safe.
-- ** Hybrid Linking ** : We are using FFI to link the Rust code with the C code. We are using the `#[no_mangle]` attribute to ensure that the function name is not mangled by the compiler. We are also using the `extern` keyword to indicate that the function is implemented outside of Rust.
+- **Memory Safety** : We try to take advantage Rust's ownership, borrowing and lifetime system to ensure memory safety in the ported codebase, thereby mitigating common memory-related pitfalls like null pointer dereferencing and memory leaks which are usually problems in a pure C codebase. In our examples we use a linked list implemented in Rust to take advantage of its memory safety guarantees. 
+- **Symbolic Execution** : We use KLEE which is an LLVM based symbolic execution engine to test the C code for memory out of bounds errors. We use the functions `klee_make_symbolic` and `klee_assume` to create symbolic data and to assume certain conditions on the symbolic data to guide the symbolic execution. We are also using klee_check_memory_access to specifically check for memory out of bounds errors. 
+- **Model Checking** : We are using Kani which is a model checker for Rust to check for null pointer dereferences in the Rust code. Kani specializes in checking memory unsafe Rust code. This is important for us since we are trying to port C code to Rust and we want to ensure that the Rust code which includes `unsafe` blocks is memory safe.
+- **Hybrid Linking** : We are using FFI to link the Rust code with the C code. We are using the `#[no_mangle]` attribute to ensure that the function name is not mangled by the compiler. We are also using the `extern` keyword to indicate that the function is implemented outside of Rust.
 - ** Choice of Programming Paradigms ** :  Implementation of a certain functionality in Rust or C/C++ is decided based on the programming paradigm that is best suited for the task. Each programming language has its pros and cons and in our use case Rust offers memory safety but many codebases have not been converted to Rust which will take a lot of time and require a lot of testing to ensure that the functionality is preserved. C on the other hand is widely used in many codebases and is a low level language which is not memory safe. 
-- ** Data Structures ** : In our examples we are testing it on a linked list implementation which we have written in Rust. In many codebases data structures are crucial to the code and are often included in header files which are written in C which is the parent language here. We try to include the Rust implemented linked list inside the C code to test whether we can use data structures implemented in Rust in C codebases.
-- ** Object-Oriented Programming Principles ** : We have implemented a linked list according to the object oriented programming principles in Rust. We have used structs to encapsulate the data and functions to operate on the data. We have also used the `impl` keyword to implement the functions.
+- **Data Structures** : In our examples we are testing it on a linked list implementation which we have written in Rust. In many codebases data structures are crucial to the code and are often included in header files which are written in C which is the parent language here. We try to include the Rust implemented linked list inside the C code to test whether we can use data structures implemented in Rust in C codebases.
+- **Object-Oriented Programming Principles** : We have implemented a linked list according to the object oriented programming principles in Rust. We have used structs to encapsulate the data and functions to operate on the data. We have also used the `impl` keyword to implement the functions.
 
 ### 4. Results and Testing:
 
@@ -70,23 +70,6 @@
 
 7. **Security Analysis:**
     - Extend the project to include security-focused symbolic execution, identifying vulnerabilities and security issues in code.
-
-- **Additional POPL Aspects:**
-1. **Data Races:**
-   - Explore techniques to identify and mitigate data races in concurrent code.
-
-2. **Pointer Aliasing Rules:**
-   - Investigate advanced pointer analysis techniques to enforce and check pointer aliasing rules more rigorously, ensuring a higher level of safety in memory operations.
-
-3. **Immutable Data Mutations:**
-   - Develop mechanisms to track reference lifetimes and detect mutations on immutable data more precisely, allowing for better identification of potential issues related to data mutability.
-
-4. **Call ABI and Unwind ABI Mismatch:**
-   - Investigate methods to independently verify call ABI and unwind ABI, providing additional checks beyond reliance on the Rust compiler to catch potential mismatches.
-
-5. **Uninitialized Memory Detection:**
-   - Enhance mechanisms for detecting and reporting the use of uninitialized memory, potentially through advanced static analysis or runtime checks.
-## [LinkedList Implementation in Rust(Linked_List_Example.rs)](https://github.com/yashrb24/popl-project/blob/main/code-orig/Linked_List_Example.rs)
 
 ### Overview
 
