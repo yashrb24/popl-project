@@ -23,7 +23,8 @@ Check out the installation guide [here](https://model-checking.github.io/kani/in
 ## KLEE Symbolic Execution Engine
 
 ### Installation Guide
-Check out the installation guide [here](https://klee.github.io/getting-started/)
+Check out the installation guide [here](https://klee.github.io/docker/)
+Use the docker installation as that works out of the box, Ensure docker is installed in the system before this
 
 ### Overview
 - **Symbolic Execution Engine:** KLEE is a symbolic execution engine designed for program analysis.
@@ -38,9 +39,23 @@ Check out the installation guide [here](https://klee.github.io/getting-started/)
 ### Usage
 
 1. **Compile Your Code:**
-   - Use `clang` to compile your code to LLVM bitcode. For example:
+   - Use `clang` to compile your C code to LLVM bitcode. For example:
      ```bash
      clang -emit-llvm -c -g your_code.c -o your_code.bc
+     ```
+   - Note that klee currently works with llvm 13 and clang 13 so if you want to run this outside the docker container, ensure the clang       version is clang 13
+   - To install clang 13 and llvm 13 on ubuntu run
+     ```bash
+     sudo apt-get install clang-13 llvm-13 llvm-13-dev llvm-13-tools
+     ```
+   - To compile your Rust code to LLVM bitcode, ensure you are using rustc version 1.59.0 which compiles to llvm 13
+   -  To change the rust version use 
+     ```bash
+     rustup override set 1.59.0
+     ```
+   - to compile the rust file llvm bitcode use
+     ```bash
+     rustc --emit=llvm-bc my_rust_code.rs
      ```
 
 2. **Run KLEE:**
